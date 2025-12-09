@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahic - Construtora de Casas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    
+
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>SAHIC</h1>
+                <p>Construtora</p>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BANNER AUTOMÁTICO -->
+    <section id="home" class="banner">
+        <div class="banner-container">
+            <div class="banner-slide active">
+                <img src="foto/logo.jpeg" alt="Casa moderna">
+                <div class="banner-content">
+                    <h2>Construindo Sonhos</h2>
+                    <p>Casas modernas e de qualidade</p>
+                </div>
+            </div>
+            <div class="banner-slide">
+                <img src="foto/casa2.jpeg" alt="Arquitetura">
+                <div class="banner-content">
+                    <h2>Arquitetura de Excelência</h2>
+                    <p>Projetos inovadores e sustentáveis</p>
+                </div>
+            </div>
+            <div class="banner-slide">
+                <img src="foto/casa3.jpeg" alt="Construção">
+                <div class="banner-content">
+                    <h2>Qualidade Garantida</h2>
+                    <p>Com os melhores materiais do mercado</p>
+                </div>
+            </div>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2>Sobre Sahic</h2>
+            <p>A Sahic é uma construtora líder no mercado, especializada em criar casas que combinam qualidade, design moderno e sustentabilidade. Com mais de 15 anos de experiência, entregamos projetos que transformam vidas.</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Casas Residenciais</h3>
+                    <p>Projetos residenciais personalizados com acabamento premium e design moderno.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Projetos Comerciais</h3>
+                    <p>Construção de imóveis comerciais otimizados para seu negócio crescer.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Reforma e Restauro</h3>
+                    <p>Reformas completas e restauração de imóveis com tecnologia moderna.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Construção Sustentável</h3>
+                    <p>Casas eco-friendly com sistemas de energia renovável integrados.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3>Projetos Arquitetônicos</h3>
+                    <p>Planejamento e design de projetos antes da execução da obra.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Consultoria Técnica</h3>
+                    <p>Acompanhamento técnico profissional em todas as etapas da obra.</p>
+                    <a href="#contato" class="card-btn">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <h2>Nossos Projetos</h2>
+            <div class="projetos-filtro">
+                <button class="filtro-btn ativo" onclick="filterProjects('all')">Todos</button>
+                <button class="filtro-btn" onclick="filterProjects('residencial')">Residencial</button>
+                <button class="filtro-btn" onclick="filterProjects('comercial')">Comercial</button>
+                <button class="filtro-btn" onclick="filterProjects('reforma')">Reforma</button>
+            </div>
+
+            <div class="projetos-grid">
+                <div class="projeto-card" data-categoria="residencial">
+                    <div class="projeto-img">
+                        <img src="foto/casa7.jpeg" alt="Projeto 1">
+                        <div class="projeto-overlay">
+                            <h4>Casa Moderna Luxo</h4>
+                            <p>Projeto residencial de alta padrão</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-categoria="residencial">
+                    <div class="projeto-img">
+                        <img src="foto/casa4.jpeg" alt="Projeto 2">
+                        <div class="projeto-overlay">
+                            <h4>Condomínio Residencial</h4>
+                            <p>Área verde e segurança garantida</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-categoria="comercial">
+                    <div class="projeto-img">
+                        <img src="foto/casa5.jpeg" alt="Projeto 3">
+                        <div class="projeto-overlay">
+                            <h4>Prédio Comercial Centro</h4>
+                            <p>Acabamento premium para negócios</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-categoria="comercial">
+                    <div class="projeto-img">
+                        <img src="foto/casa6.jpeg" alt="Projeto 4">
+                        <div class="projeto-overlay">
+                            <h4>Edifício Multi-uso</h4>
+                            <p>Comercial e residencial integrado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-categoria="reforma">
+                    <div class="projeto-img">
+                        <img src="foto/casa7.jpeg" alt="Projeto 5">
+                        <div class="projeto-overlay">
+                            <h4>Reforma Completa Histórica</h4>
+                            <p>Modernização com preservação</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card" data-categoria="reforma">
+                    <div class="projeto-img">
+                        <img src="foto/casa1.jpeg" alt="Projeto 6">
+                        <div class="projeto-overlay">
+                            <h4>Renovação Apartamento</h4>
+                            <p>Espaço moderno e funcional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Fale Conosco</h2>
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Rua das Casas, 123 - São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@sahic.com.br</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contato-form">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu E-mail" required>
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Sahic Construtora. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

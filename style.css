@@ -1,0 +1,646 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --azul-principal: #0066cc;
+  --azul-claro: #e8f1ff;
+  --branco: #ffffff;
+  --cinza-claro: #f5f5f5;
+  --cinza-escuro: #333333;
+  --sombra: 0 4px 15px rgba(0, 102, 204, 0.15);
+  --sombra-forte: 0 8px 30px rgba(0, 102, 204, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HEADER */
+.header {
+  background: var(--branco);
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: var(--azul-principal);
+  font-weight: 700;
+}
+
+.logo p {
+  font-size: 0.8rem;
+  color: var(--azul-principal);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--cinza-escuro);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--azul-principal);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--azul-principal);
+  transition: 0.3s;
+}
+
+/* BANNER */
+.banner {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  background: var(--azul-claro);
+}
+
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-slide {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: fade 1s;
+}
+
+.banner-slide.active {
+  display: flex;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--branco);
+  width: 100%;
+  padding: 0 20px;
+}
+
+.banner-content h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 102, 204, 0.7);
+  color: var(--branco);
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  z-index: 100;
+}
+
+.prev:hover,
+.next:hover {
+  background: var(--azul-principal);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: var(--branco);
+  width: 30px;
+  border-radius: 6px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* SOBRE */
+.sobre {
+  padding: 80px 0;
+  background: var(--cinza-claro);
+  text-align: center;
+}
+
+.sobre h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--azul-principal);
+}
+
+.sobre p {
+  font-size: 1.1rem;
+  color: var(--cinza-escuro);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* SERVIÇOS */
+.servicos {
+  padding: 100px 0;
+  background: var(--branco);
+}
+
+.servicos h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--azul-principal);
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.servico-card {
+  background: var(--branco);
+  border: 2px solid var(--azul-claro);
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.servico-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--sombra-forte);
+  border-color: var(--azul-principal);
+}
+
+.card-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--azul-claro);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+  color: var(--azul-principal);
+  transition: 0.3s;
+}
+
+.servico-card:hover .card-icon {
+  background: var(--azul-principal);
+  color: var(--branco);
+  transform: scale(1.1);
+}
+
+.servico-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--cinza-escuro);
+}
+
+.servico-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.card-btn {
+  display: inline-block;
+  background: var(--azul-principal);
+  color: var(--branco);
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 600;
+  border: 2px solid var(--azul-principal);
+}
+
+.card-btn:hover {
+  background: transparent;
+  color: var(--azul-principal);
+}
+
+/* PROJETOS */
+.projetos {
+  padding: 100px 0;
+  background: var(--cinza-claro);
+}
+
+.projetos h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--azul-principal);
+}
+
+.projetos-filtro {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background: var(--branco);
+  border: 2px solid var(--azul-claro);
+  color: var(--cinza-escuro);
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.filtro-btn:hover,
+.filtro-btn.ativo {
+  background: var(--azul-principal);
+  color: var(--branco);
+  border-color: var(--azul-principal);
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.projeto-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: all 0.3s;
+}
+
+.projeto-card.hidden {
+  display: none;
+}
+
+.projeto-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--sombra-forte);
+}
+
+.projeto-img {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.projeto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.projeto-card:hover .projeto-img img {
+  transform: scale(1.1);
+}
+
+.projeto-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 102, 204, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--branco);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.projeto-card:hover .projeto-overlay {
+  opacity: 1;
+}
+
+.projeto-overlay h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.projeto-overlay p {
+  font-size: 0.95rem;
+}
+
+/* CONTATO */
+.contato {
+  padding: 100px 0;
+  background: var(--branco);
+}
+
+.contato h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--azul-principal);
+}
+
+.contato-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.contato-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.info-item i {
+  font-size: 1.8rem;
+  color: var(--azul-principal);
+  margin-top: 5px;
+}
+
+.info-item h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--cinza-escuro);
+}
+
+.info-item p {
+  color: #666;
+}
+
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contato-form input,
+.contato-form textarea {
+  padding: 15px;
+  border: 2px solid var(--azul-claro);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+  outline: none;
+  border-color: var(--azul-principal);
+  box-shadow: 0 0 0 3px var(--azul-claro);
+}
+
+.btn-enviar {
+  background: var(--azul-principal);
+  color: var(--branco);
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-enviar:hover {
+  background: #0052a3;
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-forte);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--cinza-escuro);
+  color: var(--branco);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.social-links a {
+  color: var(--branco);
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--azul-principal);
+}
+
+/* BOTÃO FLUTUANTE WHATSAPP */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25d366;
+  color: var(--branco);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: 0.3s;
+  z-index: 999;
+  animation: bounce 2s infinite;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--branco);
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 0;
+    box-shadow: var(--sombra);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--azul-claro);
+  }
+
+  .banner {
+    height: 400px;
+  }
+
+  .banner-content h2 {
+    font-size: 2rem;
+  }
+
+  .banner-content p {
+    font-size: 1rem;
+  }
+
+  .contato-content {
+    grid-template-columns: 1fr;
+  }
+
+  .servicos-grid,
+  .projetos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre h2,
+  .servicos h2,
+  .projetos h2,
+  .contato h2 {
+    font-size: 2rem;
+  }
+
+  .whatsapp-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    bottom: 20px;
+    right: 20px;
+  }
+}
